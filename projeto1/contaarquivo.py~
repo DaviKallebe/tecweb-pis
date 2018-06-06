@@ -1,0 +1,12 @@
+import re
+import sys
+
+word = sys.argv[1]
+file_name = sys.argv[2]
+
+with open(file_name, 'r') as f:
+    input_string = f.read()
+
+    count = sum(1 for _ in re.finditer(r'\b%s\b' % re.escape(word), input_string))
+
+    print 'Total de ocorrencias de %s foi %s' % (word, count)

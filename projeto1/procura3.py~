@@ -1,0 +1,25 @@
+import sys
+
+word = sys.argv[1]
+file_name = sys.argv[2]
+
+def substring_indexes(substring, string):
+
+    last_found = -1
+    while True:     
+        last_found = string.find(substring, last_found + 1)
+
+        if last_found == -1:  
+            break
+
+        yield last_found
+
+with open(file_name, 'r') as f:
+    input_string = f.read()
+
+    count = 1
+
+    for pos in substring_indexes(word, input_string):
+        print count, input_string[pos-5:pos+10].strip()
+
+        count = count + 1

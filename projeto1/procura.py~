@@ -1,0 +1,24 @@
+import sys
+
+word = sys.argv[1]
+argv = sys.argv[2:]
+
+#linha de comando
+#python contador.py palavra diretorio_para_arquivos
+#'/home/cloudera/Downloads/tecweb-pis/projeto1/wc/part-r-00000'
+
+words_hash = dict()
+
+for file_name in argv:
+    with open(file_name, 'r') as f:           
+        for line in f:
+            reg = line.strip().split("	")
+
+            if word in reg[0]:
+                if not reg[0] in words_hash:
+                    words_hash[reg[0]] = 1
+                else:
+                    words_hash[reg[0]] = words_hash[reg[0]] + 1
+
+for key, value in words_hash.iteritems():
+    print key, value

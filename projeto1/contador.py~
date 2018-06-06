@@ -1,0 +1,17 @@
+import sys
+
+argv = sys.argv[1:]
+
+#linha de comando
+#python contador.py diretorio_para_arquivo
+#'/home/cloudera/Downloads/tecweb-pis/projeto1/wc/part-r-00000'
+
+with open(argv[0], 'r') as f:    
+    counter = 0
+    for line in f:
+        reg = line.strip().split("	")
+
+        if reg[1] == '1':
+            counter = counter + 1
+
+    print counter
